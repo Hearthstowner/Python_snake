@@ -25,3 +25,13 @@ class Snake:
         """Отрисовка змеи на экране"""
         for segment in self.body:
             pygame.draw.rect(screen, pygame.Color("Green"), pygame.Rect(segment[0], segment[1], 10, 10))
+    def check_end_window(self):
+        """Отслеживание достижение змеёй края экрана"""
+        if self.head[0] == 419:
+            self.head[0] = 23
+        elif self.head[0] == 12:
+            self.head[0] = 419
+        elif self.head[1] == 23:
+            self.head[1] = 419
+        elif self.head[1] == 419:
+            self.head[1] = 34
