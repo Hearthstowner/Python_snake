@@ -1,21 +1,22 @@
 import sys
+
 import pygame
 
-from settings import SIZE, head, var_speed
+from snake import Snake
+from control import Control
+from settings import SIZE, var_speed
 
 pygame.init()
 screen = pygame.display.set_mode(SIZE)
-flag_game = True
 pygame.display.set_caption("Snake")
+control = Control()
+snake = Snake()
 
-while flag_game:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            flag_game = False
+while control.flag_game:
+    control.control()
     screen.fill(pygame.Color("Black"))
-    pygame.draw.rect(screen,pygame.Color("Green"), pygame.Rect(head[0], head[1], 10, 10))
+    snake.draw_snake(screen)
     if var_speed % 1000 == 0:
-        head[0] += 25
-    var_speed += 1 
+        snake.moove(control)
+    var_speed += 10 
     pygame.display.flip()
-
