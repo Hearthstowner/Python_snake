@@ -16,7 +16,8 @@ while control.flag_game:
     control.control()
     screen.fill(pygame.Color("Black"))
     snake.draw_snake(screen)
-    if var_speed % 1000 == 0:
+    if var_speed % 1000 == 0 and control.flag_pause:
         snake.moove(control)
-    var_speed += 10 
+        snake.animation()
+    var_speed += 50 
     pygame.display.flip()
