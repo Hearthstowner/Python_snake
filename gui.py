@@ -1,9 +1,9 @@
 import pygame
 class Gui:
     def __init__(self):
+        
         #40x40
         self.level = [
-
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -47,6 +47,8 @@ class Gui:
         ]
 
         self.gui_image = pygame.image.load("images/gui.png")
+        self.barrier = []
+        self.field = []
 
     def create_image(self):
         """Создает изображение на основании списка"""
@@ -65,3 +67,17 @@ class Gui:
     def draw_level(self, screen):
         """Отрисовывает уровень игры"""
         screen.blit(self.gui_image, (0, 0))
+
+    def init_field(self):
+        """Заполняет списки с координатами"""
+        x = 1
+        y = 1
+        for i in self.level:
+            if i == 0:
+                self.barrier.append([x, y])
+            elif i == 1 and y != 12:
+                self.field.append([x, y])
+            x += 11
+            if x == 441:
+                y += 11
+                x = 1
