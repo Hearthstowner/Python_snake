@@ -2,7 +2,7 @@ import pygame
 
 class Snake:
     def __init__(self):
-        self.head = [45,45]
+        self.head = [45, 45]
         self.body = [[45, 45], [34, 45], [23, 45]] #пробел в один пиксель между квадратами
 
     def moove(self, control):
@@ -17,7 +17,7 @@ class Snake:
             self.head[1] += 11
 
     def animation(self):
-        """Прибавляем в начало писка тела голову, а хвост удаляем"""
+        """Прибавляем в начало поиска тела голову, а хвост удаляем"""
         self.body.insert(0, list(self.head))
         self.body.pop()
 
@@ -43,3 +43,12 @@ class Snake:
             self.body.append(food.food_position)
             food.get_food_position(gui)
             gui.get_new_indicator()
+
+    def check_barrier(self, gui):
+        """Проверяет ни врезалась ли змея"""
+        if self.head in gui.barrier:
+            self.body.pop()
+            gui.indicator.pop()
+        if self.head in self.body[1:]:
+            self.body.pop()
+            gui.indicator.pop()

@@ -47,9 +47,12 @@ class Gui:
         ]
 
         self.gui_image = pygame.image.load("images/gui.png")
+        self.win = pygame.image.load("images/win.png")
+        self.lose = pygame.image.load("images/lose.png")
         self.barrier = []
         self.field = []
         self.indicator = [[12, 12]]
+        self.game = "GAME"
 
     def create_image(self):
         """Создает изображение на основании списка"""
@@ -91,3 +94,18 @@ class Gui:
         """Отрисовка индикатора"""
         for i in self.indicator:
             pygame.draw.rect(screen, pygame.Color("Green"), pygame.Rect(i[0], i[1], 10, 10)) 
+
+    def draw_win(self, screen):
+        """Создание победного экрана"""
+        screen.blit(self.win, (23, 100))
+
+    def draw_lose(self, screen):
+        """Создание экрана проиграша"""
+        screen.blit(self.lose, (23, 100))
+
+    def check_win_or_lose(self):
+        """Отслеживает выйгрыш или проигрыш по индикатору"""
+        if len(self.indicator) == 0:
+            self.game = "LOSE"
+        elif len(self.indicator) == 37:
+            self.game = "Win"
