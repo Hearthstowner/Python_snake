@@ -26,6 +26,7 @@ while control.flag_game:
     screen.fill(pygame.Color("Black")) 
     snake.draw_snake(screen)
     food.draw_food(screen)
+    gui.draw_indicator(screen)
     gui.draw_level(screen)
 
     if var_speed % 1000 == 0 and control.flag_pause:

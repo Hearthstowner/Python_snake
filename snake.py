@@ -25,7 +25,7 @@ class Snake:
         """Отрисовка змеи на экране"""
         for segment in self.body:
             pygame.draw.rect(screen, pygame.Color("Green"), pygame.Rect(segment[0], segment[1], 10, 10))
-            
+
     def check_end_window(self):
         """Отслеживание достижение змеёй края экрана"""
         if self.head[0] == 419:
@@ -42,3 +42,4 @@ class Snake:
         if self.head == food.food_position:
             self.body.append(food.food_position)
             food.get_food_position(gui)
+            gui.get_new_indicator()

@@ -49,6 +49,7 @@ class Gui:
         self.gui_image = pygame.image.load("images/gui.png")
         self.barrier = []
         self.field = []
+        self.indicator = [[12, 12]]
 
     def create_image(self):
         """Создает изображение на основании списка"""
@@ -81,3 +82,12 @@ class Gui:
             if x == 441:
                 y += 11
                 x = 1
+
+    def get_new_indicator(self):
+        """Заполняет список координатами индикатора"""
+        self.indicator.append([self.indicator[-1][0] + 11, 12])
+
+    def draw_indicator(self, screen):
+        """Отрисовка индикатора"""
+        for i in self.indicator:
+            pygame.draw.rect(screen, pygame.Color("Green"), pygame.Rect(i[0], i[1], 10, 10)) 
