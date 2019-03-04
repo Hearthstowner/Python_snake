@@ -6,7 +6,7 @@ from settings import *
 class Control:
     def __init__(self):
         self.flag_game = True
-        self.flag_direction = "Right"
+        self.flag_direction = "RIGHT"
         self.flag_pause = True
 
     def control(self):

@@ -36,12 +36,11 @@ while control.flag_game:
     gui.draw_level(screen)
 
     if var_speed % 1000 == 0 and control.flag_pause and gui.game == "GAME":
-        #control.flag_direction == "RIGHT"
         snake.moove(control)
         snake.check_barrier(gui)
         snake.eat(food, gui)
         snake.check_end_window()
         snake.animation()
-    var_speed += 50 
+    var_speed += 50
     pygame.display.flip()
  
